@@ -19,7 +19,7 @@ def get_fruit_loadlist():
 
 def insert_row_snowflake(new_fruit):
   with my_cnx.cursor() as my_cur:
-    my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('from sreamli')")  
+    my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('" + new_fruit + "')")  
     return "Thanks for adding the fruit" + new_fruit
 
 streamlit.title('My Parents New Healthy Diner')
@@ -69,6 +69,7 @@ if streamlit.button('Get Fruit Load List'):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   my_data_rows = get_fruit_loadlist()
   streamlit.dataframe(my_data_rows)
+  my_cnx.close()
 
 
 # fruit addition box
@@ -77,5 +78,6 @@ if streamlit.button('Add food to the list'):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   back_from_function = insert_row_snowflake(add_my_fruit)
   streamlit.text(back_from_function)
+  my_cnx.close()
 
 
