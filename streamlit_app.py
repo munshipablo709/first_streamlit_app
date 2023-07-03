@@ -53,6 +53,6 @@ streamlit.dataframe(my_data_rows)
 
 
 # fruit addition box
-fruit_choice = streamlit.text_input('What fruit would you like to add'?','Jackfruit')
+fruit_choice = streamlit.text_input('What fruit would you like to add?','Jackfruit')
 streamlit.write('Thanks for adding ', fruit_choice)
 
